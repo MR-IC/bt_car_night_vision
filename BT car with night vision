@@ -1,0 +1,57 @@
+char t;
+int val=0;
+void setup() {
+pinMode(9,OUTPUT);   
+pinMode(8,OUTPUT);   
+pinMode(7,OUTPUT);   
+pinMode(6,OUTPUT);   
+pinMode(A2,INPUT);  
+pinMode(4,OUTPUT);
+Serial.begin(9600);
+
+ 
+}
+ 
+void loop() {
+  
+if(Serial.available()){
+  t = Serial.read();
+  Serial.println(t);
+}
+ val= analogRead(A2);
+ if (val<1023){
+  digitalWrite(4,LOW);
+  delay(50);
+  }
+ else if(val>=1023){
+    digitalWrite(4,HIGH);
+    delay(50);
+    }
+if(t == 'f'){            
+  digitalWrite(9,HIGH);
+  digitalWrite(7,HIGH);
+}
+ 
+else if(t == 'b'){      
+  digitalWrite(8,HIGH);
+  digitalWrite(6,HIGH);
+}
+ 
+else if(t == 'l'){      
+  digitalWrite(7,HIGH);
+  digitalWrite(8,HIGH);
+}
+ 
+else if(t == 'r'){      
+  digitalWrite(9,HIGH);
+  digitalWrite(6,HIGH);}
+
+ 
+else if(t == 's'){      
+  digitalWrite(9,LOW);
+  digitalWrite(8,LOW);
+  digitalWrite(7,LOW);
+  digitalWrite(6,LOW);
+}
+delay(50);
+b
